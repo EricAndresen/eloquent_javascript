@@ -32,7 +32,7 @@ const isEven = (num) => {
 
 const countBs = (str) => {
     let b = 0;
-    for (n of str) {
+    for (let n of str) {
         if (n == "B") {
             b++
         }
@@ -47,7 +47,7 @@ const countBs = (str) => {
 
 const countChars = (str, char) => {
     let charCount = 0;
-    for (n of str){
+    for (let n of str){
         if (n === char){
             charCount++
         }
