@@ -22,7 +22,39 @@ const isEven = (num) => {
     }
 }
 
-console.log(isEven(50))
-console.log(isEven(75))
-// generates maximum call stack exceeded because it never hits the base case (starts below it). Fix using abs
-console.log(isEven(-101))
+// Tests
+// console.log(isEven(50))
+// console.log(isEven(75))
+// // generates maximum call stack exceeded because it never hits the base case (starts below it). Fix using abs
+// console.log(isEven(-101))
+
+// Ex 3 | Write function countBs() that returns number of B's in a given string, then make a more general version of it called countChars(), then rewrite countB to using it.
+
+const countBs = (str) => {
+    let b = 0;
+    for (n of str) {
+        if (n == "B") {
+            b++
+        }
+    }
+
+    return b
+}
+
+// Test
+// console.log(countBs("BaBsasBdfDBsB"))
+// => 4
+
+const countChars = (str, char) => {
+    let charCount = 0;
+    for (n of str){
+        if (n === char){
+            charCount++
+        }
+    }
+
+    return charCount
+}
+
+console.log(countChars("BBBBBB", "B"))
+// => 6
