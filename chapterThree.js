@@ -32,9 +32,34 @@ const range = (startValue, endValue, step = 1) => {
 // console.log(sum([1,1,1,1]))
 // console.log(range(2,15, 2))
 // console.log(sum(range(1,5)))
-console.log(range(5,2,-1))
+// console.log(range(5,2,-1))
 // => [5,4,3,2,1]
-console.log(range(1,10,2))
+// console.log(range(1,10,2))
 // => [1,3,5,7,9]
-console.log(range(1,10,-2))
+// console.log(range(1,10,-2))
 // => Error!
+
+// # Ex 2 | Make reverse(array) -> new array in reverse order and reverseInPlace(array) that mutates array
+
+const reverse = (array) => {
+    let newArray = [];
+    for (let i of array) {
+        newArray.unshift(i)
+    }
+    return newArray
+}
+
+// console.log(reverse([1,2,3]))
+// // -> [3,2,1]
+// console.log(reverse(["race", "car"]))
+// // -> ["car", "race"]
+
+const reverseInPlace = (array) => {
+    for (const [index, value] of reverse(array).entries()){
+        array[index] = value
+    }  
+};
+
+// let testList1 = [1,2,3]
+// reverseInPlace(testList1);
+// console.log(testList1)
