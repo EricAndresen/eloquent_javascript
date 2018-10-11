@@ -63,3 +63,96 @@ const reverseInPlace = (array) => {
 // let testList1 = [1,2,3]
 // reverseInPlace(testList1);
 // console.log(testList1)
+
+// Ex 3 | Make arrayToList(array) -> Linked List and listToArray(linkedListObject) -> array
+
+// linked list are really just a recursive implementation of 
+// List = {
+//     value: 1,
+//     pointer: null,
+// }
+
+const arrayToList = (array, index) =>{
+    if (!array[index]) {
+        return null
+    } else {
+        return {value: array[index], 
+                pointer: arrayToList(array, index + 1)}    
+    } 
+}
+
+// console.log(arrayToList([1,2,3], 0))
+/* -> {
+    value: 1,
+    pointer: {
+        value: 2,
+        pointer: {
+            value 3,
+            pointer: null,
+        }
+    }
+}
+*/
+
+const listToArray = (linkedListObject) => {
+    if (!linkedListObject){
+        return []
+    } else {
+        const nextStep = listToArray(linkedListObject.pointer)
+        return [linkedListObject.value, ...nextStep]
+    }
+}
+
+const list1 = {
+        value: 1,
+        pointer: {
+            value: 2,
+            pointer: {
+                value: 3,
+                pointer: null,
+            }
+        }
+    }
+// console.log(listToArray())
+// -> [1,2,3]
+
+// Make prepend(element, linkedList) -> listObject with element at front
+
+const prepend = (element, linkedListObject) => (
+    {
+        value: element,
+        pointer: linkedListObject
+    }
+)
+
+// console.log(prepend(0, list1))
+/* -> {
+    value: 0,
+    pointer: {
+        value: 1,
+        pointer: {
+            value: 2,
+            pointer: {
+                value: 3,
+                pointer: null,
+            }
+        }
+    }
+}
+*/
+
+// Make nth(index, linkedList) -> elements at index or undefined
+
+const nth = (index, linkedList, startPoint = 0) => {
+    if (startPoint === index) {
+        return linkedList.value
+    } else if (linkedList === null){
+        return undefined
+    } else {
+        return nth(index, linkedList.pointer, startPoint + 1) || undefined
+    }
+}
+
+console.log(list1)
+console.log(nth(0, list1))
+// -> 1
