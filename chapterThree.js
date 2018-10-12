@@ -153,6 +153,49 @@ const nth = (index, linkedList, startPoint = 0) => {
     }
 }
 
-console.log(list1)
-console.log(nth(0, list1))
+// console.log(list1)
+// console.log(nth(0, list1))
 // -> 1
+
+// Ex 4 | make deepEqual(objectOne, objectTwo) -> Bool that recurses the object and returns if objects are an exact match
+
+const deepEqual = (objectOne, objectTwo) => {
+    // if all levels are not false, then they must match (true)
+    for (const i of Object.keys(objectOne)){
+        // recurse down into the deeper object and execute the same
+        if (typeof(objectOne[i]) === 'object' & objectOne[i] != null){
+            return deepEqual(objectOne[i], objectTwo[i])
+        }else if (objectOne[i] !== objectTwo[i]){
+            return false
+        }
+    }
+    return true
+}
+
+// Tests
+const testObjectOne = {
+    h : "hello",
+    w : {
+        i: "interesting",
+        l: "llama",
+        o: {
+            n: null,
+            i: 123
+        }
+    }
+}
+
+const testObjectTwo = {
+    h : "hello",
+    w : {
+        i: "interesting",
+        l: "llama",
+        o:  {
+            n: null,
+            i: 123
+        }
+    }
+}
+
+console.log(deepEqual(testObjectOne,testObjectTwo))
+// true
